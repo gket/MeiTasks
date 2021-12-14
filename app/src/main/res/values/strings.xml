@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MeiTasks</string>
+    <string name="text_query_search">Search...</string>
+    <string name="text_filter_all">All</string>
+    <string name="text_filter_active">Active</string>
+    <string name="text_filter_archived">Archived</string>
+    <string name="text_search_description">You can search for task titles, notes, users using @, tags using #, checklist items, and much more</string>
+    <string name="text_search_info">Search for a task using a few keyword</string>
 </resources>
