@@ -8,8 +8,11 @@ import android.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.gketdev.meitasks.R
 import com.gketdev.meitasks.adapter.TaskAdapter
 import com.gketdev.meitasks.databinding.FragmentHomeBinding
+import com.gketdev.meitasks.ui.taskdialog.TaskDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -56,11 +59,16 @@ class HomeFragment : Fragment() {
             when (it) {
                 is HomeViewState.Error -> {
                     Toast.makeText(requireContext(), it.error.toString(), Toast.LENGTH_SHORT).show()
+                    binding.progressBar.visibility = View.GONE
                 }
                 is HomeViewState.Tasks -> {
                     adapter.tasks = it.list
                     binding.imageViewSearchIcon.visibility = View.GONE
                     binding.textViewSearchProvide.visibility = View.GONE
+                    binding.progressBar.visibility = View.GONE
+                }
+                is HomeViewState.RequestLoading -> {
+                    binding.progressBar.visibility = View.VISIBLE
                 }
             }
         }
@@ -103,6 +111,10 @@ class HomeFragment : Fragment() {
                 binding.chipActive.id -> viewModel.searchQuery(query, ACTIVE)
                 binding.chipArchived.id -> viewModel.searchQuery(query, ARCHIVED)
             }
+        }
+        adapter.onTaskClicked = {
+            val direction = HomeFragmentDirections.actionHomeFragmentToTaskDialogFragment(it)
+            findNavController().navigate(direction)
         }
     }
 

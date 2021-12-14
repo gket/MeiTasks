@@ -22,6 +22,7 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
 
     fun searchQuery(query: String, status: Int?) {
         viewModelScope.launch(Dispatchers.IO) {
+            _viewState.postValue(HomeViewState.RequestLoading)
             repository.searchQuery(query, status).collect {
                 when (it) {
                     is DataResultState.Error -> {
