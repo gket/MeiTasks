@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.gketdev.meitasks.data.TaskEntity
-import com.gketdev.meitasks.data.TaskItem
 import com.gketdev.meitasks.databinding.ItemTaskBinding
 import javax.inject.Inject
 import kotlin.properties.Delegates

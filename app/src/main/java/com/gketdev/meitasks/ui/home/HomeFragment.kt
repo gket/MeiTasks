@@ -9,10 +9,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.gketdev.meitasks.R
 import com.gketdev.meitasks.adapter.TaskAdapter
 import com.gketdev.meitasks.databinding.FragmentHomeBinding
-import com.gketdev.meitasks.ui.taskdialog.TaskDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -27,7 +25,6 @@ class HomeFragment : Fragment() {
         const val ACTIVE = 1
         const val ARCHIVED = 18
     }
-
 
     @Inject
     lateinit var adapter: TaskAdapter

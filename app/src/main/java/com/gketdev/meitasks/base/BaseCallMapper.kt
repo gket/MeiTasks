@@ -9,7 +9,7 @@ abstract class BaseCallMapper {
             val response = call()
             DataResultState.Success(response)
         } catch (exception: IOException) {
-            DataResultState.Offline(exception)
+            DataResultState.Offline()
         } catch (exception: Throwable) {
             DataResultState.Error(error = exception, message = exception.message.toString())
         }
